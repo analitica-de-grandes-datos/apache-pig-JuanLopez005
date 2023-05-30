@@ -12,3 +12,7 @@ $ pig -x local -f pregunta.pig
 
      >>> Escriba el codigo del mapper a partir de este punto <<<
 */
+data = LOAD 'data.tsv' USING PigStorage('\t') AS (letra:CHARARRAY, fecha:CHARARRAY, valor:INT);
+ordenado = ORDER data BY letra, valor;
+
+STORE ordenado INTO 'output/' using PigStorage(',');

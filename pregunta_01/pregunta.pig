@@ -12,3 +12,8 @@ $ pig -x local -f pregunta.pig
 
         >>> Escriba su respuesta a partir de este punto <<<
 */
+data = LOAD 'data.tsv' USING PigStorage('\t') AS (letra:CHARARRAY, fecha:CHARARRAY, valor:INT);
+grouped_data = GROUP data BY letter;
+result = FOREACH grouped_data GENERATE group AS letter, COUNT(data) AS count;
+
+STORE result INTO 'output/' using PigStorage(',');
