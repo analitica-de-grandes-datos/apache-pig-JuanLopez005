@@ -18,5 +18,6 @@ sorted_data = ORDER data BY valor;
 top_5_val = LIMIT sorted_data 5;
 
 resultado = FOREACH top_5_val GENERATE valor;
+DUMP resultado;
 
 STORE resultado INTO 'output/' using PigStorage(',');

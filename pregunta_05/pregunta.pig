@@ -23,5 +23,6 @@ specific_columns = FOREACH data_table GENERATE columna2;
 words = FOREACH specific_columns GENERATE FLATTEN(columna2) AS word;
 grouped = GROUP words BY word;
 wordcount = FOREACH grouped GENERATE group, COUNT(words);
+DUMP wordcount;
 
 STORE wordcount INTO 'output' USING PigStorage(',');

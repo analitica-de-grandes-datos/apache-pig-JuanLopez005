@@ -14,5 +14,6 @@ $ pig -x local -f pregunta.pig
 */
 data = LOAD 'data.tsv' USING PigStorage('\t') AS (letra:chararray, fecha:chararray, valor:int);
 ordenado = ORDER data BY letra, valor;
+DUMP ordenado;
 
 STORE ordenado INTO 'output/' using PigStorage(',');

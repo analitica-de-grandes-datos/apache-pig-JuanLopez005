@@ -18,5 +18,6 @@ data1 = FOREACH data GENERATE M;
 data2 = FOREACH data1 GENERATE FLATTEN(M);  
 data3 = GROUP data2 BY $0;
 data4 = FOREACH data3 GENERATE group, COUNT($1);
+DUMP data4;
 
 STORE data4 INTO 'output/' using PigStorage(',');
