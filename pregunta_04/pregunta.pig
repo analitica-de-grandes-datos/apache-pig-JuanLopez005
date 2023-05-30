@@ -30,7 +30,7 @@ $ pig -x local -f pregunta.pig
 */
 data = LOAD 'data.csv' using PigStorage(',') AS (driverId:int, truckId:int, eventTime:chararray, eventType:chararray, longitude:double, latitude:double, eventKey:chararray, correlationId:chararray, driverName:chararray,routeId:Biginteger,routeName:chararray, eventDate:chararray );
 data1 = limit data 10;
-data2 = FOREACH data_1 GENERATE driverId,truckId,eventTime;
+data2 = FOREACH data1 GENERATE driverId,truckId,eventTime;
 data3 = ORDER data2 BY driverId,truckId,eventTime;
 
 STORE data3 INTO 'output/' using PigStorage(',');
