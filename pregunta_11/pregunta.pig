@@ -37,4 +37,4 @@ data1 = FOREACH data GENERATE UCFIRST(lastname), UPPER(lastname), LOWER(lastname
 data2 = ORDER data1 BY $0;
 DUMP data2;
 
-STORE C INTO 'output/' using PigStorage(',');
+STORE data2 INTO 'output/' using PigStorage(',');
