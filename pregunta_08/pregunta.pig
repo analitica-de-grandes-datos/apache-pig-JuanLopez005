@@ -21,6 +21,6 @@ data1 = FOREACH data GENERATE f2, f3;
 data2 = FOREACH data1 GENERATE FLATTEN(f2),FLATTEN(f3);
 data3 = GROUP data2 BY ($0, $1);
 data4 = FOREACH data3 GENERATE group ,COUNT($1);
-DUMP E;
+DUMP data4;
 
 STORE data4 INTO 'output/' using PigStorage(',');
