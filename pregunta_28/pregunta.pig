@@ -26,4 +26,4 @@ data = LOAD './data.csv' using PigStorage(',') AS (num:int, name:chararray, LAST
 data1 = FOREACH data GENERATE SUBSTRING(time,0,4), SUBSTRING(time,2,4);
 DUMP data1;
 
-STORE data1 INTO 'output/' using PigSt
+STORE data1 INTO 'output/' USING PigStorage(',');
