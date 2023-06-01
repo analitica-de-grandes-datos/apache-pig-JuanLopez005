@@ -26,4 +26,9 @@ $ pig -x local -f pregunta.pig
 
         >>> Escriba su respuesta a partir de este punto <<<
 */
+data = LOAD './data.csv' using PigStorage(',') AS (id:int,  name:chararray, lastname:chararray,   date:chararray,  color:chararray, other:int);
+data1 = FILTER data BY lastname matches '[D-K].*' ;
+data2 = FOREACH data1 GENERATE lastname;
+DUMP data2;
 
+STORE data2 INTO 'output/' using PigStorage(',');
